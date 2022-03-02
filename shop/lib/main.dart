@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'detail.dart';
+import 'Assmenu.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Home(),
+      theme: ThemeData(primarySwatch: Colors.grey),
     );
   }
 }
@@ -22,6 +24,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<Assmenu> menu = [
+    Assmenu("PC", "assets/images/PC.jpg"),
+    Assmenu("Tablet", 'assets/images/tablet.jpg'),
+    Assmenu("notebook", 'assets/images/notebook.jpg')
+  ];
   TextEditingController name = TextEditingController();
   TextEditingController price = TextEditingController();
   TextEditingController dork = TextEditingController();
@@ -42,7 +49,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("CIRRLE"),
+          title: Text("CIRCLE"),
+          centerTitle: true,
         ),
         body: Container(
             constraints: BoxConstraints.expand(),
@@ -56,7 +64,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "assets/images/logo.png",
+                    "assets/images/logo2.png",
                     height: 80,
                   ),
                   TextField(
@@ -111,7 +119,7 @@ class _HomeState extends State<Home> {
                           ),
                         );
                       },
-                      child: Text('Go Next Page'))
+                      child: Text('คำนวณ'))
                 ],
               ),
             )));

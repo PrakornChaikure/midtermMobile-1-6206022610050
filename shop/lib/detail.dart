@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class WelcomePage extends StatelessWidget {
   String w, e, n;
@@ -10,6 +11,7 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var f = NumberFormat("#,###.0#", "en_US");
     return Scaffold(
       appBar: AppBar(
         title: Text('สรุปรายละเอียด'),
@@ -52,8 +54,8 @@ class WelcomePage extends StatelessWidget {
                     margin: const EdgeInsets.all(1),
                     child: ListTile(
                       title: Text('ดอกเบี้ย : '),
-                      subtitle:
-                          Text(' ' + nunberAdd2(double.parse(e)).toString()),
+                      subtitle: Text(
+                          ' ' + nunberAdd2(double.parse(e)).toString() + '%'),
                     )),
                 Card(
                     elevation: 5,
@@ -61,7 +63,9 @@ class WelcomePage extends StatelessWidget {
                     child: ListTile(
                       title: Text('ดอกเบี้ยทั้งหมด : '),
                       subtitle: Text(' ' +
-                          nunberAdd(double.parse(e), double.parse(w))
+                          f
+                              .format(
+                                  nunberAdd(double.parse(e), double.parse(w)))
                               .toString()),
                     )),
                 Card(
@@ -70,7 +74,9 @@ class WelcomePage extends StatelessWidget {
                     child: ListTile(
                       title: Text('จำนวนผ่อนต่องวด : '),
                       subtitle: Text(' ' +
-                          numberAdd3(double.parse(e), double.parse(w))
+                          f
+                              .format(
+                                  numberAdd3(double.parse(e), double.parse(w)))
                               .toString()),
                     )),
                 Card(
@@ -79,7 +85,9 @@ class WelcomePage extends StatelessWidget {
                     child: ListTile(
                       title: Text('จำนวนเงินทั้งหมด เมื่อผ่อนครบ : '),
                       subtitle: Text(' ' +
-                          nunberAdd4(double.parse(e), double.parse(w))
+                          f
+                              .format(
+                                  nunberAdd4(double.parse(e), double.parse(w)))
                               .toString()),
                     )),
               ],
